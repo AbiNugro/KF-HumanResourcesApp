@@ -46,7 +46,7 @@
                     @if(session('success'))
                         <div class="alert alert-success">{{ session('success') }}</div>
                     @endif
-                    
+
                     <table class="table table-striped" id="table1">
                         <thead>
                             <tr>
@@ -71,7 +71,7 @@
                                     @elseif($task->status == 'done')
                                         <span class="badge bg-success">Done</span>
                                     @else
-                                        <span class="badge bg-info">{{ $task->status }}</span>
+                                        <span class="badge bg-info">Progress</span>
                                     @endif
                                 </td>
                                 <td>
@@ -81,7 +81,7 @@
                                     @else 
                                         <a href="" class="btn btn-warning btn-sm">Mark as Pending</a>
                                     @endif
-                                   <a href="" class="btn btn-warning btn-sm">Edit</a>
+                                   <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                    <a href="" class="btn btn-danger btn-sm">Delete</a>
                                 </td>
                             </tr>
