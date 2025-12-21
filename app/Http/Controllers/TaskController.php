@@ -14,8 +14,11 @@ class TaskController extends Controller
         return view('task.index', compact('tasks'));
     }    
 
-    public function create() {
+    public function show(Task $task) {
+        return view('task.show', compact('task'));
+    }
 
+    public function create() {
         $employess = Employee::all();
 
         return view('task.create', compact('employess'));

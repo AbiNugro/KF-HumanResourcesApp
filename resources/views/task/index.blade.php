@@ -75,7 +75,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                   <a href="" class="btn btn-info btn-sm">View</a>
+                                   <a href="{{ route('tasks.show', $task->id) }}" class="btn btn-info btn-sm">View</a>
                                    @if ($task->status == 'pending')
                                         <a href="{{ route('tasks.progress', $task->id) }}" class="btn btn-primary btn-sm">Mark as Progress</a>
                                     @elseif ($task->status == 'progress')
