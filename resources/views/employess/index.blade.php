@@ -40,7 +40,7 @@
                 </div>
                 <div class="card-body">
                     <div class="d-flex">
-                        <a href="{{ route('employess.create') }}" class="btn btn-primary mb-3 ms-auto">New Task</a>
+                        <a href="{{ route('employess.create') }}" class="btn btn-primary mb-3 ms-auto">New Employee</a>
                     </div>
 
                     @if(session('success'))
@@ -75,7 +75,7 @@
                                         <span class="badge bg-danger">Inactive</span>
                                     @endif
                                 </td>
-                                <td>{{ $employee->salary }}</td>
+                                <td>{{ number_format($employee->salary) }}</td>
                                 <td>
                                    <a href="{{ route('employess.show', $employee->id) }}" class="btn btn-info btn-sm">View</a>
                                    <a href="{{ route('employess.edit', $employee->id) }}" class="btn btn-warning btn-sm">Edit</a>
