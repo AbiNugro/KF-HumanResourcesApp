@@ -40,7 +40,7 @@
                 </div>
                 <div class="card-body">
                     <div class="d-flex">
-                        <a href="{{ route('departments.create') }}" class="btn btn-primary mb-3 ms-auto">New Employee</a>
+                        <a href="{{ route('departments.create') }}" class="btn btn-primary mb-3 ms-auto">New Department</a>
                     </div>
 
                     @if(session('success'))
