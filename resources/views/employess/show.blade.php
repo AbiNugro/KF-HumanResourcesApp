@@ -85,7 +85,7 @@
                         <p>{{ $employee->salary }}</p>
                     </div>
                     
-                    <div class="mb-3">
+                    <div class="mb-4">
                         <label class="d-block"><b>Status</b></label>
                         @if($employee->status == 'active')
                             <p class="badge bg-info">{{ ucfirst($employee->status) }}</p>

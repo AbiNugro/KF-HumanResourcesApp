@@ -36,7 +36,7 @@
         <section class="section">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="card-title">Create New Employee</h5>
+                    <h5 class="card-title">Edit Employee</h5>
                 </div>
                 <div class="card-body">
                     
@@ -53,7 +53,7 @@
                     <form action="{{ route('employess.update', $employee->id) }}" method="POST">
                         @csrf
                         @method('PUT')
-                        
+
                         <div class="mb-3">
                             <label for="" class="form-label">Fullname</label>
                             <input type="text" class="form-control" name="fullname" value="{{ old('fullname', $employee->fullname) }}" required>
@@ -139,7 +139,7 @@
                             @enderror
                         </div>
 
-                        <div class="mb-3">
+                        <div class="mb-4">
                             <label for="" class="form-label">Salary</label>
                             <input type="number" class="form-control" name="salary" value="{{ old('salary', $employee->salary) }}" required>
                             @error('salary')
