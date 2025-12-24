@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\RoleController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -16,8 +17,11 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 // Handle Employee
 Route::resource('/employess', EmployeeController::class);
 
-//Handle Department
+// Handle Department
 Route::resource('/departments', DepartmentController::class);
+
+// Handle Role
+Route::resource('/roles', RoleController::class); 
 
 // Handle Tasks
 Route::resource('/tasks', TaskController::class);
