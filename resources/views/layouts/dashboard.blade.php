@@ -163,6 +163,11 @@
         let date_flatpicker = flatpickr('.date_flatpicker', {
             dateFormat: "Y-m-d"
         });
+
+        let datetime_flatpicker = flatpickr('.datetime_flatpicker', {
+            dateFormat: "Y-m-d H:i:s",
+            enableTime: true
+        });
     </script>
 </body>
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\PresenceController;
 use App\Http\Controllers\RoleController;
 
 Route::get('/', function () {
@@ -22,6 +23,9 @@ Route::resource('/departments', DepartmentController::class);
 
 // Handle Role
 Route::resource('/roles', RoleController::class); 
+
+// Handle Presence
+Route::resource('/presences', PresenceController::class);
 
 // Handle Tasks
 Route::resource('/tasks', TaskController::class);
