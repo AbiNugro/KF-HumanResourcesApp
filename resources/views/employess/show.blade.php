@@ -39,63 +39,64 @@
                     <h5 class="card-title">Detail Employee</h5>
                 </div>
                 <div class="card-body">
-                    
-                    <div class="mb-3">
-                        <label><b>Fullname</b></label>
-                        <p>{{ $employee->fullname }}</p>
-                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label><b>Fullname</b></label>
+                                <p>{{ $employee->fullname }}</p>
+                            </div>
 
-                    <div class="mb-3">
-                        <label><b>Email</b></label>
-                        <p>{{ $employee->email }}</p>
-                    </div>
+                            <div class="mb-3">
+                                <label><b>Email</b></label>
+                                <p>{{ $employee->email }}</p>
+                            </div>
 
-                    <div class="mb-3">
-                        <label><b>Phone Number</b></label>
-                        <p>{{ $employee->phone_number }}</p>
-                    </div>
+                            <div class="mb-3">
+                                <label><b>Phone Number</b></label>
+                                <p>{{ $employee->phone_number }}</p>
+                            </div>
 
-                    <div class="mb-3">
-                        <label><b>Address</b></label>
-                        <p>{{ $employee->address }}</p>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label><b>Birth Date</b></label>
-                        <p>{{ \Carbon\Carbon::parse($employee->birth_date)->format('d F Y') }}</p>
-                    </div>
+                            <div class="mb-3">
+                                <label><b>Address</b></label>
+                                <p>{{ $employee->address }}</p>
+                            </div>
 
-                    <div class="mb-3">
-                        <label><b>Hire Date</b></label>
-                        <p>{{ \Carbon\Carbon::parse($employee->hire_date)->format('d F Y') }}</p>
-                    </div>
+                            <div class="mb-3">
+                                <label><b>Birth Date</b></label>
+                                <p>{{ \Carbon\Carbon::parse($employee->birth_date)->format('d F Y') }}</p>
+                            </div>
 
-                    <div class="mb-3">
-                        <label><b>Department</b></label>
-                        <p>{{ $employee->department->description }}</p>
-                    </div>
+                            <div class="mb-3">
+                                <label><b>Hire Date</b></label>
+                                <p>{{ \Carbon\Carbon::parse($employee->hire_date)->format('d F Y') }}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label><b>Department</b></label>
+                                <p>{{ $employee->department->description }}</p>
+                            </div>
 
-                    <div class="mb-3">
-                        <label><b>Role</b></label>
-                        <p>{{ $employee->role->title }}</p>
-                    </div>
+                            <div class="mb-3">
+                                <label><b>Role</b></label>
+                                <p>{{ $employee->role->title }}</p>
+                            </div>
 
-                    <div class="mb-3">
-                        <label><b>Salar</b></label>
-                        <p>{{ $employee->salary }}</p>
-                    </div>
-                    
-                    <div class="mb-4">
-                        <label class="d-block"><b>Status</b></label>
-                        @if($employee->status == 'active')
-                            <p class="badge bg-info">{{ ucfirst($employee->status) }}</p>
-                        @else
-                            <p class="badge bg-danger">{{ ucfirst($employee->status) }}</p>
-                        @endif
-                    </div>
+                            <div class="mb-3">
+                                <label><b>Salar</b></label>
+                                <p>{{ $employee->salary }}</p>
+                            </div>
 
-                    
-
+                            <div class="mb-4">
+                                <label class="d-block"><b>Status</b></label>
+                                @if ($employee->status == 'active')
+                                    <p class="badge bg-info">{{ ucfirst($employee->status) }}</p>
+                                @else
+                                    <p class="badge bg-danger">{{ ucfirst($employee->status) }}</p>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
                     <a href="{{ route('employess.index') }}" class="btn btn-secondary">Back to List</a>
                 </div>
             </div>

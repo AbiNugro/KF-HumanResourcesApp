@@ -39,45 +39,46 @@
                     <h5 class="card-title">Detail Task</h5>
                 </div>
                 <div class="card-body">
-                    
-                    <div class="mb-3">
-                        <label><b>Title</b></label>
-                        <p>{{ $task->title }}</p>
-                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label><b>Title</b></label>
+                                <p>{{ $task->title }}</p>
+                            </div>
 
-                    <div class="mb-3">
-                        <label><b>Employee</b></label>
-                        <p>{{ $task->employee->fullname }}</p>
-                    </div>
+                            <div class="mb-3">
+                                <label><b>Employee</b></label>
+                                <p>{{ $task->employee->fullname }}</p>
+                            </div>
 
-                    <div class="mb-3">
-                        <label><b>Employee</b></label>
-                        <p>{{ $task->employee->fullname }}</p>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label><b>Due Date</b></label>
-                        <p>{{ \Carbon\Carbon::parse($task->due_date)->format('d F Y') }}</p>
-                    </div>
+                            <div class="mb-3">
+                                <label><b>Employee</b></label>
+                                <p>{{ $task->employee->fullname }}</p>
+                            </div>
 
-                    <div class="mb-3">
-                        <label><b>Description</b></label>
-                        <p>{{ $task->description }}</p>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label class="d-block"><b>Status</b></label>
-                        @if($task->status == 'pending')
-                            <p class="badge bg-warning">{{ ucfirst($task->status) }}</p>
-                        @elseif($task->status == 'progress')
-                            <p class="badge bg-primary">{{ ucfirst($task->status) }}</p>
-                        @else
-                            <p class="badge bg-success">{{ ucfirst($task->status) }}</p>
-                        @endif
-                    </div>
+                            <div class="mb-3">
+                                <label><b>Due Date</b></label>
+                                <p>{{ \Carbon\Carbon::parse($task->due_date)->format('d F Y') }}</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label><b>Description</b></label>
+                                <p>{{ $task->description }}</p>
+                            </div>
 
-                    
-
+                            <div class="mb-3">
+                                <label class="d-block"><b>Status</b></label>
+                                @if ($task->status == 'pending')
+                                    <p class="badge bg-warning">{{ ucfirst($task->status) }}</p>
+                                @elseif($task->status == 'progress')
+                                    <p class="badge bg-primary">{{ ucfirst($task->status) }}</p>
+                                @else
+                                    <p class="badge bg-success">{{ ucfirst($task->status) }}</p>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
                     <a href="{{ route('tasks.index') }}" class="btn btn-secondary">Back to List</a>
                 </div>
             </div>
