@@ -54,7 +54,9 @@
                                 <th>Check In</th>
                                 <th>Check Out</th>
                                 <th>Status</th>
-                                <th>Action</th>
+                                @if(session('role') == 'HR')
+                                    <th>Action</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -72,6 +74,7 @@
                                         <span class="badge bg-danger">{{ ucfirst($presence->status) }}</span>
                                     @endif
                                 </td>
+                                @if(session('role') == 'HR')
                                 <td>
                                    <a href="{{ route('presences.edit', $presence->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                 
@@ -81,6 +84,7 @@
                                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Sure?')">Delete</button>
                                     </form>
                                 </td>
+                                @endif
                             </tr>
 
                             @endforeach

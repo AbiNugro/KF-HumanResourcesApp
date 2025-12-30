@@ -5,11 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Presence;
 use App\Models\Employee;
+use Carbon\Carbon;
 
 class PresenceController extends Controller
 {
     public function index() {
-        $presences = Presence::all();
+        if(session('role') == 'HR') {
+            $presences = Presence::all();
+        } else {
+            $presences = Presence::where('employee_id', session('employee_id'))->get();
+        }
 
         return view('presences.index', compact('presences'));
     }
@@ -21,7 +26,8 @@ class PresenceController extends Controller
     }
 
     public function store(Request $request) {
-        $request->validate([
+        if(session('role') == 'HR') {
+            $request->validate([
             'employee_id' => 'required',
             'check_in' => 'required',
             'check_out' => 'required',
@@ -29,6 +35,16 @@ class PresenceController extends Controller
         ]);
 
         Presence::create($request->all());
+        } else {
+            Presence::create([
+                'employee_id' => session('employee_id'),
+                'check_in' => Carbon::now()->format('Y-m-d H:i:s'),
+                'latitude' => $request->latitude,
+                'longitude' => $request->longitude,
+                'status' => 'present'
+            ]);
+        }
+        
 
         return redirect()->route('presences.index')->with('success', 'Success presented');
     }
