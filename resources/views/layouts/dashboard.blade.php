@@ -70,56 +70,91 @@
                     <ul class="menu">
                         <li class="sidebar-title">Menu</li>
 
+                        @if(session('role') === 'HR')
                         <li class="sidebar-item active ">
-                            <a href="index.html" class='sidebar-link'>
+                            <a href="{{ url('/dashboard') }}" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="#" class='sidebar-link'>
+                            <a href="{{ url('/tasks') }}" class='sidebar-link'>
                                 <i class="bi bi-check-circle-fill"></i>
                                 <span>Tasks</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="#" class='sidebar-link'>
+                            <a href="{{ url('/employess') }}" class='sidebar-link'>
                                 <i class="bi bi-people-fill"></i>
                                 <span>Employees</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="#" class='sidebar-link'>
+                            <a href="{{ url('/departments') }}" class='sidebar-link'>
                                 <i class="bi bi-briefcase"></i>
                                 <span>Departments</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="#" class='sidebar-link'>
+                            <a href="{{ url('/roles') }}" class='sidebar-link'>
                                 <i class="bi bi-tag"></i>
                                 <span>Roles</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="#" class='sidebar-link'>
+                            <a href="{{ url('/presences') }}" class='sidebar-link'>
                                 <i class="bi bi-table"></i>
                                 <span>Presences</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="#" class='sidebar-link'>
+                            <a href="{{ url('/payrolls') }}" class='sidebar-link'>
                                 <i class="bi bi-currency-dollar"></i>
                                 <span>Payrolls</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a href="#" class='sidebar-link'>
+                            <a href="{{ url('/leave-requests') }}" class='sidebar-link'>
                                 <i class="bi bi-shift-fill"></i>
                                 <span>Leave Requests</span>
                             </a>
                         </li>
+
+                        @else
+                        <li class="sidebar-item active ">
+                            <a href="{{ url('/dashboard') }}" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
                         <li class="sidebar-item">
-                            <a href="#" class='sidebar-link'>
+                            <a href="{{ url('/tasks') }}" class='sidebar-link'>
+                                <i class="bi bi-check-circle-fill"></i>
+                                <span>Tasks</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="{{ url('/presences') }}" class='sidebar-link'>
+                                <i class="bi bi-table"></i>
+                                <span>Presences</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="{{ url('/payrolls') }}" class='sidebar-link'>
+                                <i class="bi bi-currency-dollar"></i>
+                                <span>Payrolls</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a href="{{ url('/leave-requests') }}" class='sidebar-link'>
+                                <i class="bi bi-shift-fill"></i>
+                                <span>Leave Requests</span>
+                            </a>
+                        </li>
+                        @endif
+
+                        <li class="sidebar-item">
+                            <a href="{{ url('/logout') }}" class='sidebar-link'>
                                 <i class="bi bi-box-arrow-right"></i>
                                 <span>Logout</span>
                             </a>

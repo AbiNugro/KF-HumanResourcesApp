@@ -9,7 +9,11 @@ use App\Models\Employee;
 class TaskController extends Controller
 {
     public function index() {
-        $tasks = Task::all();
+        if(session('role') === 'HR') {
+            $tasks = Task::all();
+        } else {
+            $tasks = Task::where('assigned_to', session('employee_id'))->get();
+        }
 
         return view('task.index', compact('tasks'));
     }    
@@ -40,6 +44,7 @@ class TaskController extends Controller
     }
 
     public function edit(Task $task) {
+        
         $employess = Employee::all();
 
         return view('task.edit', compact('task', 'employess'));

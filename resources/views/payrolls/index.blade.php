@@ -1,4 +1,4 @@
-a@extends('layouts.dashboard')
+@extends('layouts.dashboard')
 
 @section('content')
     <header class="mb-3">
