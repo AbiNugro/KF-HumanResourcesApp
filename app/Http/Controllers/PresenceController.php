@@ -36,14 +36,22 @@ class PresenceController extends Controller
 
         Presence::create($request->all());
         } else {
+            $now = Carbon::now('Asia/Jakarta');
+            $nowHour = $now->format('H:i');
+
+            $status = ($nowHour >= '07:00' && $nowHour <= '09:00')
+                ? 'present'
+                : 'absent';
+
             Presence::create([
                 'employee_id' => session('employee_id'),
-                'check_in' => Carbon::now()->format('Y-m-d H:i:s'),
-                'latitude' => $request->latitude,
-                'longitude' => $request->longitude,
-                'status' => 'present'
+                'check_in'    => $now,
+                'latitude'    => $request->latitude,
+                'longitude'   => $request->longitude,
+                'status'      => $status
             ]);
         }
+        
         
 
         return redirect()->route('presences.index')->with('success', 'Success presented');

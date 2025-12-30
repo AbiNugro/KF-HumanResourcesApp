@@ -55,7 +55,9 @@
                                 <th>Start Date</th>
                                 <th>End Date</th>
                                 <th>Status</th>
+                                @if(session('role') == 'HR')
                                 <th>Action</th>
+                                @endif
                             </tr>
                         </thead>
                         <tbody>
@@ -75,6 +77,7 @@
                                             <span class="badge bg-warning">{{ ucfirst($leaveRequest->status) }}</span>
                                         @endif
                                     </td>
+                                    @if(session('role') == 'HR')
                                     <td>
                                         @if($leaveRequest->status == 'reject' || $leaveRequest->status == 'pending')
                                             
@@ -98,6 +101,7 @@
                                                 onclick="return confirm('Sure?')">Delete</button>
                                         </form>
                                     </td>
+                                    @endif
                                 </tr>
                             @endforeach
 

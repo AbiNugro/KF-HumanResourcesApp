@@ -40,7 +40,9 @@
                 </div>
                 <div class="card-body">
                     <div class="d-flex">
+                        @if(session('role') == 'HR')
                         <a href="{{ route('payrolls.create') }}" class="btn btn-primary mb-3 ms-auto">New Payroll</a>
+                        @endif
                     </div>
 
                     @if (session('success'))
@@ -72,6 +74,7 @@
                                     <td>
                                         <a href="{{ route('payrolls.show', $payroll->id) }}"
                                             class="btn btn-info btn-sm">Salary Slip</a>
+                                        @if(session('role') == 'HR')
                                         <a href="{{ route('payrolls.edit', $payroll->id) }}"
                                             class="btn btn-warning btn-sm">Edit</a>
 
@@ -82,6 +85,7 @@
                                             <button type="submit" class="btn btn-danger btn-sm"
                                                 onclick="return confirm('Sure?')">Delete</button>
                                         </form>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
