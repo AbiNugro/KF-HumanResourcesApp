@@ -12,6 +12,11 @@
     <link rel="stylesheet" href="{{ asset('mazer/dist/assets/compiled/css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('mazer/dist/assets/compiled/css/app-dark.css') }}">
     <link rel="stylesheet" href="{{ asset('mazer/dist/assets/compiled/css/iconly.css') }}">
+
+    <!-- dripicons -->
+    <link rel="stylesheet" href="{{ asset('mazer/dist/assets/compiled/css/ui-icons-dripcions.css') }}">
+    <link rel="stylesheet" href="{{ asset('mazer/dist/assets/extensions/@icon/dripicons/dripicons.css') }}">
+
     <!-- Table -->
     <link rel="stylesheet" href="{{ asset('mazer/dist/assets/extensions/simple-datatables/style.css') }}">
     <link rel="stylesheet" href="{{ asset('mazer/dist/assets/extensions/table-datatables.css') }}">
@@ -187,6 +192,10 @@
     <script src="{{ asset('mazer/dist/assets/extensions/apexcharts/apexcharts.min.js') }}"></script>
     <script src="{{ asset('mazer/dist/assets/static/js/pages/dashboard.js') }}"></script>
 
+    <!-- Chart JS -->
+    <script src="{{ asset('mazer/dist/assets/extensions/chart.js/chart.umd.js') }}"></script>
+    
+
     <!-- Table -->
     <script src="{{ asset('mazer/dist/assets/extensions/simple-datatables/umd/simple-datatables.js') }}"></script>
     <script src="{{ asset('mazer/dist/assets/static/js/pages/simple-datatables.js') }}"></script>
@@ -203,6 +212,48 @@
             dateFormat: "Y-m-d H:i:s",
             enableTime: true
         });
+
+        var ctxBar = document.getElementById('presence').getContext('2d');
+        var myBar = new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                datasets: [{
+                    label: 'Total',
+                    data: [],
+                    backgroundColor: 'rgba(64, 82, 227, 1)',
+                    borderColor: '#57CAEB'
+                }]
+            },
+            options : {
+                responsive: true, 
+                title: {
+                    display: true,
+                    text: 'Latest Presence'
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        function updateData() {
+            fetch('/dashboard/presence')
+                .then(responce => responce.json())
+                .then((output) => {
+                    myBar.data.datasets = [{
+                        label: 'Total',
+                        data: output,
+                        backgroundColor: 'rgba(63, 82, 227, 1)',
+                        borderColor: '#57CAEB'
+                    }];
+                    myBar.update();
+                });
+        }
+
+        updateData();
     </script>
 </body>
 

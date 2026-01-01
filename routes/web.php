@@ -12,12 +12,12 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\LeaveRequestController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 Route::middleware('auth')->group(function() {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard')->middleware(['role:HR,Developer,Sales']);
-
+    Route::get('/dashboard/presence', [DashboardController::class, 'presence']);
     // Handle Employee
     Route::resource('/employess', EmployeeController::class)->middleware(['role:HR']);
 
